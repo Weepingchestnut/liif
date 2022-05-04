@@ -27,7 +27,7 @@ class SRImplicitPaired(Dataset):
     def __getitem__(self, idx):
         img_lr, img_hr = self.dataset[idx]
 
-        s = img_hr.shape[-2] // img_lr.shape[-2] # assume int scale
+        s = img_hr.shape[-2] // img_lr.shape[-2]    # assume int scale
         if self.inp_size is None:
             h_lr, w_lr = img_lr.shape[-2:]
             img_hr = img_hr[:, :h_lr * s, :w_lr * s]
@@ -109,7 +109,7 @@ class SRImplicitDownsampled(Dataset):
         if self.inp_size is None:
             h_lr = math.floor(img.shape[-2] / s + 1e-9)
             w_lr = math.floor(img.shape[-1] / s + 1e-9)
-            img = img[:, :round(h_lr * s), :round(w_lr * s)] # assume round int
+            img = img[:, :round(h_lr * s), :round(w_lr * s)]    # assume round int
             img_down = resize_fn(img, (h_lr, w_lr))
             crop_lr, crop_hr = img_down, img
         else:

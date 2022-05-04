@@ -4,7 +4,7 @@ train_dataset:
     args:
       root_path: ./load/div2k/DIV2K_train_HR
       repeat: 20
-      cache: in_memory
+      cache: bin    # in_memory, bin, none
   wrapper:
     name: sr-implicit-downsampled
     args:
